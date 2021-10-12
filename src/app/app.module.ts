@@ -24,6 +24,7 @@ import { enviarDatos } from './home/editarCampos/enviarDatos';
 
 // Speech
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
   providers: [
     FirebaseService,
     SpeechRecognition,
+    TextToSpeech,
     enviarDatos,
     enviarPregunta,
     AngularFirestore,

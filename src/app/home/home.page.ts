@@ -3,6 +3,7 @@ import { SpeechRecognition, SpeechRecognitionListeningOptions } from '@ionic-nat
 import { enviarDatos } from './editarCampos/enviarDatos';
 import { Storage } from '@ionic/storage-angular';
 import { database } from 'firebase';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomePage {
     private speechRecognition: SpeechRecognition,
     private change: ChangeDetectorRef,
     private enviardatos: enviarDatos,
-    private storage: Storage
+    private storage: Storage,
+    private tts: TextToSpeech
   ) {}
 
   async ngOnInit(){
@@ -111,6 +113,7 @@ export class HomePage {
     this.enviardatos.recogerFrase(fraseArray).then(data => {
       this.respuesta = data;
       this.desarrollo(this.respuesta);
+      this.respuesta = this.respuesta.join(" ")
       this.change.detectChanges();
     });
     return this.respuesta;
@@ -118,7 +121,6 @@ export class HomePage {
 
   // Animacion desarrollo
   desarrollo(inter){
-    console.log(inter)
     if(inter === true){
       this.topstring = 'Modo desarrollador activado';
       // Animaciones
@@ -137,6 +139,7 @@ export class HomePage {
     else{
       document.getElementById('topText').classList.remove('desarrollo');
       this.topstring = 'Pulsa para hablar';
+      this.speak(this.respuesta)
     }
   }
   
@@ -145,6 +148,14 @@ export class HomePage {
   cambiaColor(color){
     let glass = document.getElementById('glass');
     glass.style.color = color;
+  }
+
+  // Habla
+  speak(texto){
+    this.tts.speak({
+      text: texto.join(" "),
+      locale: 'es-ESP'
+    })
   }
 
 }
