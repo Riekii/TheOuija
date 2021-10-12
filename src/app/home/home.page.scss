@@ -1,0 +1,64 @@
+.body{
+  --ion-background-color: black;
+  --ion-text-color: white;
+  text-align: center;
+  #glass{
+    font-size: 0em;
+    transform: rotate(180deg);
+    text-align: center;
+    transition: all 1s ease-in-out;
+  }
+  #topText, #bottomText, #fantasmaText{
+    position: absolute;
+    display: block;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    font-size: 1.2em;
+    color: grey;
+  }
+
+  #fantasmaText{
+    margin-top: 10vh;
+  }
+  #topText{
+    top: 10vh;
+  }
+  #bottomText{
+    bottom: 20vh;
+    color: white;
+  }
+  
+  .escuchando{
+    color: green;
+  }
+  .noescuchando{
+    color: red;
+  }
+
+  // Animación modo desarrollo
+  .desarrollo{
+    color: orange !important;
+    animation-name: parpadeo;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  // Animación enviar
+  .enviado{
+    transition: ease-in-out 0.1s !important;
+    color: green !important;
+    animation-name: arriba;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: initial;
+  }
+}

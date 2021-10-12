@@ -1,0 +1,10 @@
+{
+  "name": "theOuija",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}
